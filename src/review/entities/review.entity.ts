@@ -3,6 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Book } from '../../books/entities/book.entity';
 import { User } from 'src/user/entities/user.entity';
@@ -18,9 +19,17 @@ export class Review {
   @Column({ nullable: true })
   comment: string;
 
+  @Column()
+  userId: string;
+
   @ManyToOne(() => User, (user) => user.reviews)
+  @JoinColumn({ name: 'userId' })
   user: User;
 
+  @Column()
+  bookId: string;
+
   @ManyToOne(() => Book, (book) => book.reviews)
+  @JoinColumn({ name: 'bookId' })
   book: Book;
 }

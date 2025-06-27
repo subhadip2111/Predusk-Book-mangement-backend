@@ -5,7 +5,7 @@ import { Book } from './entities/book.entity';
 import { BookService } from './books.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Book])], // Add your Book entity here
+  imports: [TypeOrmModule.forFeature([Book])], 
   controllers: [BooksController],
   providers: [BookService],
 })

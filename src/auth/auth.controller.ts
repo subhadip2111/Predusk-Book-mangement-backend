@@ -10,7 +10,7 @@ import { ApiSuccessResponse } from 'src/utils/ApiSuccess';
 export class AuthController {
   constructor(private readonly authService: AuthService) { }
 
-  @ApiOperation({ summary: 'Register a user ' })
+  @ApiOperation({ summary: 'Register your account  ' })
   @ApiBody({ type: RegisterDto, description: 'Give the RegisterDto deatails ', required: true })
     @ApiResponse({ status: 201, type: RegisterOutputDto })
   @Post('register')
@@ -26,6 +26,6 @@ export class AuthController {
   async login(@Body() dto: LoginDto) {
    console.log('dto', dto);
     const loginUser= await this.authService.login(dto.email, dto.password);
-    return new ApiSuccessResponse(HttpStatus.OK, true, 'User logged in successfully', loginUser);
+    return new ApiSuccessResponse(HttpStatus.OK, true, 'Logged in successfully', loginUser);
   }
 }
